@@ -50,7 +50,7 @@ export const authenticateUser =  (requiredRole) => async (req, res, next) => {
   if (!token) {
     return res.json({ message: 'Unauthorized - Token not provided' });
   }
-
+ 
   try {
     const decoded = await jwt.verify(token, process.env.LOGINSIG);
     req.user = decoded;
