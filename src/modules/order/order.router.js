@@ -1,6 +1,5 @@
 import { Router } from "express";
-import * as orderController from './order.controller.js';
-import { authenticateUser } from "../auth/auth.controller.js";
+import * as orderController from './order.controller.js'
 const router = Router({caseSensitive:true});
 
 // const isAdmin = (req, res, next) => {
@@ -16,10 +15,10 @@ const router = Router({caseSensitive:true});
 //   };
 
 
-router.post('/create', authenticateUser('user'), orderController.createOrder); //user
-router.delete('/delete/:_id', authenticateUser('user'), orderController.destroy); //user
-router.get('/getAllOrders', authenticateUser('admin'), orderController.GetOrders); //admin
-router.put('/AcceptAllOrders', authenticateUser('admin'), orderController.AcceptAllOrders); //admin
-router.put('/AcceptOrder/:_id', authenticateUser('admin'), orderController.AcceptOrder) //admin
-router.put('/rejectOrder/:_id', authenticateUser('admin'), orderController.RejectOrder);
+router.post('/create', orderController.createOrder); //user
+router.delete('/delete/:_id', orderController.destroy); //user
+router.get('/getAllOrders', orderController.GetOrders); //admin
+router.put('/AcceptAllOrders', orderController.AcceptAllOrders); //admin
+router.put('/AcceptOrder/:_id', orderController.AcceptOrder) //admin
+router.put('/rejectOrder/:_id', orderController.RejectOrder);
 export default router;

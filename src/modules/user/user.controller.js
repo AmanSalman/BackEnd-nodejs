@@ -12,9 +12,8 @@ export const Users = async (req, res) => {
 
 export const update = async (req, res) => {
 	try {
-		const {_id} = req.params;
 		const {name, phone, email, password} = req.body;
-		const updatedUser = await userModel.findByIdAndUpdate(_id, {
+		const updatedUser = await userModel.findByIdAndUpdate(req._id, {
 			name,
 			phone,
 			email,
