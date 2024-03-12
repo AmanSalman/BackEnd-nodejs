@@ -22,6 +22,8 @@ const bookSchema = new Schema({
 		ref: 'Category',
 		required: true
 	}
+}, {
+	timestamps:true
 });
 
 const bookModel = model('Book', bookSchema);

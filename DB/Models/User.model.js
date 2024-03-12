@@ -19,6 +19,8 @@ const userSchema = new Schema({
 		required: true
 	},
 	role: { type: String, enum: ['user', 'admin', 'guest'], default: 'user' }
+}, {
+	timestamps:true
 });
 
 const userModel = model('User', userSchema);
