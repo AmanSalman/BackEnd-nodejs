@@ -7,11 +7,11 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'http://localhost:3000',  // replace with your frontend's URL
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // enable credentials (cookies, authorization headers, etc.)
-    optionsSuccessStatus: 204, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  };
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };  
   
   app.use(cors(corsOptions));
   
