@@ -55,7 +55,7 @@ export const destroy = async (req, res) => {
 	try {
 		const {_id} = req.params;
 		const book = await bookModel.findByIdAndDelete(_id);
-		return res.json({message: 'success', user: book})
+		return res.json({message: 'success', Book: book})
 	} catch (error) {
 		return res.json({message: "Error", error: error.stack});
 	}
