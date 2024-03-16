@@ -21,6 +21,11 @@ const bookSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Category',
 		required: true
+	},
+	categoryName:{
+		type:String,
+		ref:'Category',
+		required:true
 	}
 }, {
 	timestamps:true

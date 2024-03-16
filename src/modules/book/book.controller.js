@@ -17,10 +17,13 @@ export const createBook = async (req, res) => {
 			price,
 			description,
 			publishingHouse,
-			categoryId:category._id
+			categoryId:category._id,
+			categoryName
 		});
 		const savedBook = await newBook.save();
-		return res.json({message: "success", AddedBook: savedBook});
+		savedBook.categoryName = categoryName;
+		console.log(savedBook)
+		return res.json({message: "success", savedBook, categoryName});
 	} catch (error) {
 		console.log(error)
 		return res.json({message: "Error", error: error.stack});
