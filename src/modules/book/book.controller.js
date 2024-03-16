@@ -1,4 +1,5 @@
 import bookModel from "../../../DB/Models/Book.model.js";
+import categoryModel from "../../../DB/Models/Category.model.js";
 
 export const createBook = async (req, res) => {
 	try {
@@ -7,15 +8,16 @@ export const createBook = async (req, res) => {
 			price,
 			description,
 			publishingHouse,
-			categoryId
+			categoryName
 		} = req.body;
 
+		const category = await categoryModel.findOne({categoryName});
 		const newBook = new bookModel({
 			title,
 			price,
 			description,
 			publishingHouse,
-			categoryId
+			categoryId:category._id
 		});
 		const savedBook = await newBook.save();
 		return res.json({message: "success", AddedBook: savedBook});

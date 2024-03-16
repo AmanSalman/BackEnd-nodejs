@@ -18,7 +18,7 @@ const bookSchema = new Schema({
 		required: true
 	},
 	categoryId: {
-		type: String,
+		type: Schema.Types.ObjectId,
 		ref: 'Category',
 		required: true
 	}
