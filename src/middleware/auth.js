@@ -44,7 +44,7 @@ export const authenticateUser =  (requiredRole) => async (req, res, next) => {
 
   export const auth = async (req, res, next)=>{
     const {authorization} = req.headers;
-    if(!authorization.startsWith(process.env.BEARERTOKEN)){
+    if(!authorization || !authorization.startsWith(process.env.BEARERTOKEN)){
       return res.status(400).json({message:"invalid authorization"});
     }
     const token = authorization.split(process.env.BEARERTOKEN)[1];
@@ -55,7 +55,7 @@ export const authenticateUser =  (requiredRole) => async (req, res, next) => {
     next();
   }
 
-  
+
 
 
   export default auth;
