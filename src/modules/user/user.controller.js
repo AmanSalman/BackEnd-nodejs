@@ -49,6 +49,6 @@ export const getOrders = async (req,res) => {
 
 
 export const Profile = async (req,res)=>{
-	const user = req.user;
+	const user = await userModel.findById(req.user._id);
 	return res.status(200).json({message:"success", user});
 }
