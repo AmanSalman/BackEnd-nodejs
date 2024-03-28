@@ -46,3 +46,9 @@ export const getOrders = async (req,res) => {
 		return res.json({message: "Error", error: error.stack});
 	}
 }
+
+
+export const Profile = async (req,res)=>{
+	const user = req.user;
+	return res.status(200).json({message:"success", user});
+}

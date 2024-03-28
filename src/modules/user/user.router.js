@@ -7,4 +7,5 @@ router.get('/users',UserController.Users);
 router.put('/update/', auth, UserController.update);
 router.delete('/delete/:_id', UserController.destroy);
 router.get('/getOrders/:userId', UserController.getOrders);
+router.get('/profile', auth, UserController.Profile)
 export default router;
