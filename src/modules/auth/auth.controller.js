@@ -8,7 +8,7 @@ export const Register = async (req, res) => {
 		if(user){
 			return res.status(409).json({message:"email already exists"})
 		}
-        const hashPassword = await bcrypt.hash(password,process.env.SALTROUND);
+        const hashPassword = await bcrypt.hash(password,parseInt(process.env.SALTROUND));
 		const addedUser = userModel.create({name, phone, email, password:hashPassword,role})
 		if(!addedUser){
 			return res.status(500).json({message: "error while creating user"});
