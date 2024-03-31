@@ -6,14 +6,15 @@ import cors from 'cors';
 const app = express();
 
 
-const corsOptions = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };  
+// const corsOptions = {
+//     origin: '*',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+//     optionsSuccessStatus: 204,
+//   };  
   
-  app.use(cors(corsOptions));
+  
+  app.use(cors());
   
 dotenv.config();
 const PORT = process.env.PORT;
