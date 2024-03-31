@@ -6,15 +6,21 @@ import cors from 'cors';
 const app = express();
 
 
-const corsOptions = {
-    origin: 'http://localhost:5173',
-    methods:['GET,HEAD,PUT,PATCH,POST,DELETE'],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  };  
+const allowedOrigins = ["http://localhost:5173"];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+  },
+  methods: 'GET,POST,PUT,DELETE,HEAD,PATCH',
+  allowedHeaders: '',
+  credentials: false,
   
-  
-  app.use(cors(corsOptions));
+}));
   
 dotenv.config();
 const PORT = process.env.PORT;
