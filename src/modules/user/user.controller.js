@@ -49,6 +49,11 @@ export const getOrders = async (req,res) => {
 
 
 export const Profile = async (req,res)=>{
+	res.setHeader("Access-Control-Allow-Origin", "*")
+res.setHeader("Access-Control-Allow-Credentials", "true");
+res.setHeader("Access-Control-Max-Age", "1800");
+res.setHeader("Access-Control-Allow-Headers", "content-type");
+res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
 	const user = await userModel.findById(req.user._id);
 	return res.status(200).json({message:"success", user});
 }
