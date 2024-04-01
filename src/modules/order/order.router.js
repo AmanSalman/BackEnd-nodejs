@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as orderController from './order.controller.js'
-import auth from "../../middleware/auth.js";
+import auth, { ensureUserAdmin } from "../../middleware/auth.js";
 const router = Router({caseSensitive:true});
 
 // const isAdmin = (req, res, next) => {
@@ -20,6 +20,6 @@ router.post('/create', orderController.createOrder); //user
 router.delete('/delete/:_id', orderController.destroy); //user
 router.get('/getAllOrders', orderController.GetOrders); //admin
 router.put('/AcceptAllOrders', orderController.AcceptAllOrders); //admin
-router.put('/AcceptOrder/:_id', auth, orderController.AcceptOrder) //admin
-router.put('/rejectOrder/:_id',auth, orderController.RejectOrder);
+router.put('/AcceptOrder/:_id', auth, ensureUserAdmin('admin'), orderController.AcceptOrder) //admin
+router.put('/rejectOrder/:_id',auth,ensureUserAdmin('admin'), orderController.RejectOrder);
 export default router;
