@@ -25,7 +25,6 @@ import userModel from '../../DB/Models/User.model.js';
     const {authorization} = req.headers;
     const token = authorization.split(process.env.BEARERTOKEN)[1];
     const decoded = await jwt.verify(token, process.env.LOGINSIG);
-    console.log(decoded)
         if (decoded.role !== requiredRole) {
             return res.json({ message: 'Forbidden - Insufficient role' });
           }
@@ -37,12 +36,12 @@ import userModel from '../../DB/Models/User.model.js';
 
   export const auth = async (req, res, next)=>{
     const {authorization} = req.headers;
+    console.log(req.headers)
     if(!authorization || !authorization.startsWith(process.env.BEARERTOKEN)){
       return res.status(400).json({message:"invalid authorization"});
     }
     const token = authorization.split(process.env.BEARERTOKEN)[1];
     const decoded = await jwt.verify(token, process.env.LOGINSIG);
-    
     const authUser = await userModel.findById(decoded._id).select('name phone email ')
     req.user = authUser;
     next();
