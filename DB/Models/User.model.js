@@ -18,7 +18,14 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	role: { type: String, enum: ['user', 'admin', 'guest'], default: 'user' }
+	role: { type: String, enum: ['user', 'admin', 'guest'], default: 'user' },
+	status :{
+		type:String,
+		enum:['Activated', 'disabled'],
+		required:true,
+		default:'Activated'
+		
+	}
 }, {
 	timestamps:true
 });

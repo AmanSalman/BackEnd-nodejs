@@ -7,13 +7,13 @@ import cors from 'cors'; // Import cors middleware
 
 export const initApp = (app, express) => {
     app.use(express.json());
-    app.use(cors()); // Enable CORS middleware globally
+    app.use(cors()); 
 
     app.get('/', (req, res) => {
         return res.json({ message: 'welcome' });
     });
 
-    app.options('/user/profile', cors ())
+    app.options('/user/profile')
     app.use('/auth', authRouter);
     app.use('/user', userRouter);
     app.use('/book', bookRouter);
