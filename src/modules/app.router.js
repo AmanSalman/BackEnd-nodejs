@@ -13,7 +13,7 @@ export const initApp = (app, express) => {
         return res.json({ message: 'welcome' });
     });
 
-    app.options('/user/profile')
+    app.options('/user/profile', cors() )
     app.use('/auth', authRouter);
     app.use('/user', userRouter);
     app.use('/book', bookRouter);
