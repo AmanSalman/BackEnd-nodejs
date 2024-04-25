@@ -3,7 +3,7 @@ import userModel from "../../../DB/Models/User.model.js";
 
 export const Users = async (req, res) => {
 	try {
-		const users = await userModel.find({role:'user'}).select('name phone role status')
+		const users = await userModel.find({role:'user'}).select('name phone role status email')
 		return res.json({message: "success", users: users});
 	} catch (error) {
 		return res.json({message: "Error", error: error.stack});
