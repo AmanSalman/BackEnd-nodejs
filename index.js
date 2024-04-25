@@ -24,7 +24,7 @@ app.use(cors({
 }));
   
 dotenv.config();
-const PORT =9000;
+const PORT = process.env.PORT || 9000;
 
 
 initApp(app,express);
