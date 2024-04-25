@@ -36,7 +36,6 @@ import userModel from '../../DB/Models/User.model.js';
 
   export const auth = async (req, res, next)=>{
     const {authorization} = req.headers;
-    console.log(req.headers)
     if(!authorization || !authorization.startsWith(process.env.BEARERTOKEN)){
       return res.status(400).json({message:"invalid authorization"});
     }
