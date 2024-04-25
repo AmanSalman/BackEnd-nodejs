@@ -1,7 +1,7 @@
 import auth, { ensureUserAdmin } from '../../middleware/auth.js';
 import * as UserController from './user.controller.js';
 import { Router } from 'express';
-import {asyncHandler} from './../../services/errorHandling.js'
+import asyncHandler from '../../services/errorHandling.js';
 const router = Router ();
 router.get('/users',auth, ensureUserAdmin('admin'),UserController.Users);
 router.put('/update/', auth, UserController.update);
