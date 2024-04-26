@@ -11,4 +11,5 @@ router.get('/getAllOrders',auth, ensureUserAdmin('admin'), asyncHandler(orderCon
 router.put('/AcceptAllOrders',auth, ensureUserAdmin('admin'), asyncHandler(orderController.AcceptAllOrders)); //admin
 router.put('/AcceptOrder/:_id', auth, ensureUserAdmin('admin'), asyncHandler(orderController.AcceptOrder)); //admin
 router.put('/rejectOrder/:_id',auth,ensureUserAdmin('admin'), asyncHandler(orderController.RejectOrder));
+router.get('/acceptedOrders', asyncHandler(orderController.AcceptedOrdersCount));
 export default router;

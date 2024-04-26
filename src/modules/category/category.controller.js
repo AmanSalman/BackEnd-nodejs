@@ -12,7 +12,7 @@ export const createCategory = async (req, res) => {
       const newCategory = new categoryModel({ categoryName });
       const savedCategory = await newCategory.save();
   
-      return res.json({savedCategory});
+      return res.json({message:"success",savedCategory});
     } catch (error) {
       console.error(error);
       return res.json({ error: 'Internal server error' });
