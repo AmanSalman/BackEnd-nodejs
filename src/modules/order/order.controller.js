@@ -97,3 +97,7 @@ export const AcceptedOrdersCount = async(req,res)=>{
 	return res.status(200).json({message:"success", AcceptedOrders:AcceptedOrders});
 }
 
+export const RejectedOrdersCount = async (req,res)=>{
+	const RejectedOrders = await orderModel.countDocuments({status:'Rejected'});
+	return res.status(200).json({message:"success", RejectedOrders:RejectedOrders});	
+}
